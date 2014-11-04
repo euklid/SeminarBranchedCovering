@@ -1,0 +1,188 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE BEER-WARE LICENSE (Revision 42): %
+% <r@twopi.eu> schrieb diese Datei. Solange Sie diesen Vermerk nicht entfernen, %
+% können Sie mit dem Material machen, was Sie möchten. Wenn wir uns eines Tages %
+% treffen und Sie denken, das Material ist es wert, können Sie mir dafür ein Bier %
+% ausgeben. Robert Hemstedt %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8x]{inputenc}
+%\usepackage{ucs}
+\usepackage[left=2.0cm, right=2.0cm, top=2.0cm, bottom=2.0cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[ngerman]{babel}
+\usepackage{bbm}
+\usepackage{amssymb}
+\usepackage[amsthm,thmmarks]{ntheorem}
+%\usepackage{tabularx}
+\usepackage[arrow, matrix, curve]{xy}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+% b) Lemma, Satz, Theorem usw.
+\makeatletter
+\renewtheoremstyle{plain}%
+  {\item[\hskip\labelsep \theorem@headerfont ##1\ ##2:]}%
+  {\item[\hskip\labelsep \theorem@headerfont ##1~##2~##3:]\mbox{}}
+\makeatother
+
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Satz}[Theorem]{Satz}
+\newtheorem{Prop}[Theorem]{Proposition}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Korollar}[Theorem]{Korollar}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem*{Folgerung}[Theorem]{Folgerung}
+\newtheorem*{Behauptung}[Theorem]{Behauptung}
+\newtheorem{bez}[Theorem]{Bezeichnung}
+
+\theorembodyfont{\upshape}
+\newtheorem{Bemerkung}[Theorem]{Bemerkung}
+\newtheorem{Beispiel}[Theorem]{Beispiel}
+
+\newcommand{\herv}[1]{{\emph{\textbf{#1}}}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Ch}{\hat{\C}}
+\newcommand{\cupdot}{\mathbin{\dot{\cup}}}
+
+\def\presuper#1#2%
+  {\mathop{}%
+   \mathopen{\vphantom{#2}}^{#1}%
+   \kern-\scriptspace%
+   #2}
+
+\numberwithin{equation}{section}
+
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+\linespread{1.05}
+\author{Robert Hemstedt \\ \texttt{r@twopi.eu}}
+\title{Seminarvortrag Verzweigte Überlagerungen Riemannscher Flächen}
+\begin{document}
+\maketitle
+\section{Motivation und weitere Grundlagen}
+Wir interessieren uns weiter für holomorphe Abbildungen zwischen Riemannschen Flächen und zeigen mittels der Theorie verzweigter Überlagerungen auf, wie Überlagerungen mit gegebener Decktransformationsgruppe erzeugt werden können. Ebenso knüpfen wir an die unverzweigten Überlagerungen an und setzen sie zu verzweigten Überlagerungen fort und untersuche sie auf einige Eigenschaften.
+
+Überlagerungen Riemannscher Flächen werden etwas anders definiert als topologische Über\-la\-ge\-run\-gen.
+\begin{Definition} Eine Abbildung $\eta: X \rightarrow Y$ zwischen Riemannschen Flächen heißt eine \herv{Überlagerung}, wenn für alle $b\in Y\ \exists$ Umgebung $V$, sodass sie \herv{elementar überlagert} wird, d.h. das Urbild $\eta^{-1}(V)$ ist eine Vereinigung von Scheiben $(U,a)$, für welche $\eta|(U,a): (U,a) \rightarrow (V,b)$ Windungsabbildungen  $z\mapsto z^n$ sind.
+\end{Definition}
+\begin{Bemerkung} Die topologische, \emph{unverzweigte} Überlagerung zwischen Riemannschen Flä\-chen erweist sich als Spezialfall, falls die Windungsabbildungen allesamt der Form $z \mapsto z^1$ sind, also damit biholomorph sind. Damit besitzt sie keine Verzweigungspunkte.
+\end{Bemerkung}
+Wir erinnern an die 
+\begin{Definition}[Deckgruppe] Die \herv{Deckgruppe} $\mathcal{D}(\eta)$ einer Überlagerung (eigentlich sogar jeder holomorphen Abbildung) $\eta: X \rightarrow Y$ zwischen Riemannschen Flächen ist definiert als $\mathcal{D}(\eta) = \{ \varphi: X\rightarrow X \text{ biholomorph }|\eta\circ\varphi = \eta \}$.
+\begin{Bemerkung} Falls $X$ und $Y$ in der obigen Definition zusammenhängend sind, ist die Standgruppe $\mathcal{D}(\eta)_a$ endlich (sogar zyklisch) für $a\in X$.
+\end{Bemerkung}
+\end{Definition}
+\begin{Definition}Eine surjektive, offene, holomorphe Abbildung $\eta : X \rightarrow Y$ zwischen zusammenhängenden Flächen heißt \herv{normal}, wenn jede Faser ein Orbit (eine Bahn) der Deckgruppe $\mathcal{D(\eta)}$ ist. Normale Abbildungen mit zyklischer Deckgruppe heißen \herv{zyklisch}.
+\end{Definition}
+Beispiele zyklischer Überlagerungen sind $\C\rightarrow \C, z\mapsto z^n$ oder $\C\rightarrow \C^\times, z\mapsto e^{i z}$. Normal, aber nicht zyklisch ist die Torusprojektion $\C\rightarrow \C/\Omega$ mit dem Gitter $\Omega$.
+\begin{Bemerkung} Eine normale Abbildung ist genau dann eine unverzweigte Überlagerung, wenn $\mathcal{D}(\eta)$ frei auf jeder Faser operiert, die Standgruppen der Elemente von $\eta^{-1}$ also trivial sind.
+\end{Bemerkung}
+%Wir führen \emph{Divisoren} auf Riemannschen Flächen ein:
+%\begin{Definition} Ein Divisor auf der Fläche $X$ ist eine Funktion $D: X \rightarrow \Z$, deren Träger $Tr(D):= \{x\in X : D(x) \neq 0\}$ lokal endlich ist. Man nennt dann \begin{enumerate}
+%\item $\operatorname{gr} D :=\sum_{x\in X} D(x)$ den \herv{Grad des Divisors}. Zu jeder meromorphen Funktion $f$ , die nirgends konstant Null ist, gehört der Hauptdivisor $(f)$ mit
+%\item $(f): X\rightarrow Z ,\ x \mapsto o(f,x)$ .
+%\end{enumerate}
+%\end{Definition}
+%\begin{Bemerkung} Jeder Divisor $D$ auf $\Ch$ vom Grade Null ist Hauptdivisor der rationalen Funktion $\prod_{a\in \C} (z-a)^{D(a)}$. Dies liegt daran, dass für Polynome $p$ $(p)(\infty) = -\operatorname{gr} p$, $p$ als meromorphe Funktion auf $\Ch$ aufgefasst, gilt.
+%\end{Bemerkung}
+
+\section{Endliche Automorphismengruppen der Zahlenkugel $\hat{\C}$}
+Zunächst klassifizieren wir alle endlichen Automorphismengruppen (bis auf Konjugation) von $\operatorname{Aut}(\hat{\C})$. Später werden wir diese nutzen, um Riemannsche Räume zu konstruieren, die von $\Ch$ und einer entsprechend konstruierten Abbildung mit gewählter Automorphismengruppe überlagert werden.
+
+\begin{Satz} Die Automorphismen auf $\Ch$ sind von der Form \[ z\mapsto A(z):=\frac{az+b}{cz+d},\qquad A=\begin{pmatrix}
+a & b \\ c & d
+\end{pmatrix} \in \operatorname{GL}_2(\C). \] Man nennt sie Möbius-Transformationen. Eine Möbiustransformation $\neq \operatorname{id}$ hat entweder $2$ oder $3$ Fixpunkte. Möbiustransformationen $g$ mit drei Fixpunkten sind unendlicher Ordnung, d.h. $g^n = \underbrace{g\circ  \ldots \circ g}_{n\text{-mal}} \neq \operatorname{id}$ für $n \geq 1$. 
+
+Die so definierte Abbildung $\operatorname{GL}_2(\C) \rightarrow \operatorname{Aut}(\Ch)$ ist ein Epimorphismus mit Kern $\{\lambda\cdot \mathbbm{1}, \lambda \in \C^\times\}$.
+\end{Satz}
+\begin{Satz} Jede zyklische Gruppe $G < \operatorname{Aut}(\Ch)$ der Ordnung $n < \infty$ ist zu $C_n := \{z \rightarrow \omega z : \omega\in\mu_n \}$ konjugiert. Diese Gruppe hat zwei Ausnahmebahnen $\{0\}$ und $\{\infty\}$. 
+\end{Satz}
+%Die Funktion $\Ch \rightarrow \Ch, z\rightarrow z^n$ , ist eine $C_n$-Orbitprojektion.
+\begin{proof} Durch Konjugieren erreicht man, dass $G$ durch ein Element $g$ mit
+den beiden Fixpunkten $0$ und $\infty$ erzeugt wird. Es folgt $g(z) = \omega z$, wobei
+$\omega$ die Gruppe $\mu_n$ der $n$-ten Einheitswurzel erzeugt. 
+\end{proof}
+\begin{Satz}
+Jede nicht-zyklische, endliche Gruppe $G < \operatorname{Aut}(\Ch)$ der Ordnung $N$ hat genau drei Ausnahmeorbiten $\Sigma_1,\Sigma_2,\Sigma_3$. Für deren Mächtigkeiten $s_j :=\sharp\Sigma_j \geq 1$ und für die Ordnungen $n_j:=N/s_j$ der Standgruppen $G_a$ von $a\in \Sigma_j$ gibt es höchstens folgende Möglichkeiten: \begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|} \hline
+Typ & $N$ & $s_1$ & $s_2$ & $s_3$ & $n_1$ & $n_2$ & $n_3$ \\\hline
+$q$-Dieder, $q\geq 2$ & $2q$ & $q$ & $q$ & $2$ & $2$ & $2$ & $q$ \\\hline
+Tetraeder & $12$ & $6$ & $4$ & $4$ & $2$ & $3$ & $3$ \\\hline
+Oktaeder & $24$ & $12$ & $8$ & $6$ & $2$ & $3$ & $4$ \\\hline
+Ikosaeder & $60$ & $30$ & $20$ & $12$ & $2$ & $3$ & $5$ \\\hline
+\end{tabular}
+\end{center}
+Sei $g_j$ ein erzeugendes Element der Standgruppe von $a_j \in \Sigma_j$. Dann wird $G$ von $\{g_1, g_2, g_3\}$ erzeugt. 
+%Zwei Gruppen desselben Typs sind in $\operatorname{Aut}(\Ch)$ zueinander konjugiert.
+\end{Satz}
+Wir konstruieren uns einen Weg, wie wir uns für jede der Gruppentypen eine Gruppe visuell darstellen können. Dazu bemerken wir
+\begin{Bemerkung} Durch die stereographische Projektion $\pi:S^2\rightarrow \Ch$ wird die Gruppe $\operatorname{SO_3(\R)}$ zu einer Untergruppe von $\operatorname{Aut}(\Ch)$ gemacht. Dabei sei $\R^3$ als euklidischer Vektorraum mit dem Standardskalarprodukt und seiner induzierten Metrik versehen. Diese Metrik induzieren wir auf die Einheitssphäre und übertragen sie durch $\pi$ nach $\Ch$. Dies ist dann die \emph{chordale Metrik}.
+\end{Bemerkung}
+\begin{Bemerkung}
+Es lässt sich zeigen, dass jede Isometrie auf $\Ch$ bezüglich der chordalen Metrik von der Form $z\mapsto A(z)$ oder $z\mapsto A(\bar{z})$ mit $A\in \operatorname{SU}_2(\C)$, $A(z)$ also eine sogenannte \emph{unitäre} Möbiustransformation ist.
+\end{Bemerkung}
+Schließlich lässt sich folgender Satz folgern:
+\begin{Satz}
+Für jedes $T\in\operatorname{SO}_3(\R)$ ist $\varphi:=\pi\circ T\circ\pi^{-1}$ eine unitäre Möbiustransformation. Die Zuordnung $\operatorname{SO}_3(\R) \rightarrow \operatorname{Aut}(\Ch), T\mapsto \varphi$, ist ein Monomorphismus.
+\end{Satz}
+\begin{proof}
+Da $\varphi$ eine Isometrie ist, gibt es nach der obigen Bemerkung ein $A\in\operatorname{SU}_2(\C)$ mit $\varphi(z) = A(z)$ oder $\varphi(z)=A(\bar{z})$. Jedenfalls ist $\varphi^2 = \varphi\circ\varphi$ dann eine Möbiustransformation. Da es zu jedem $T\in\operatorname{SO}_3(\R)$ ein $U\in\operatorname{SO}_3(\R)$ mit $U^2=T$ gibt, ist $\varphi$ eine Möbiustransformation.
+\end{proof}
+Wir haben nun also eine Möglichkeit gefunden, Drehungen der $S^2$ als Möbius\-trans\-for\-ma\-tio\-nen von $\Ch$ zu verstehen. 
+Durch Parkettierungen der $S^2$ lassen sich nun Visualisierungen für die gefunden Automorphismengruppen anschicken.
+\begin{figure}[h]
+\includegraphics[width=0.8\textwidth]{polyeder.png}
+\caption{Linksseitig Parkettierungen des Tetra-, Okta- und Iksoseaders mit Baryzentren jeder Seite. Rechtsseitg die Parkettierungen auf die $S^2$ mittels Radialprojektion übertragen.}
+\end{figure}
+
+\noindent Die Automorphismen der Gruppen $G$ sind hierbei für die einzelnen platonischen Körper:
+\begin{itemize}
+\item \textbf{Tetraeder:} $4$ Achsen durch Ecke/Seitenzentrum mit je $2$, $3$ Achsen durch die Kantenmitten mit je $1$ aus $G\setminus\{\operatorname{id}\}$. Also $4\cdot 2 + 3\cdot 1 + 1 = 12$ Elemente.
+\item \textbf{Oktaeder:} $3$ Achsen durch die Ecken mit je $3$, $4$ Achsen durch die Flächenmitten mit je $2$ und $6$ Achsen durch die Kantenmitten mit je $1$ Element aus $G\setminus\{\operatorname{id}\}$. Also $3\cdot 3 + 4\cdot 2 + 6\cdot 1 + 1 = 24$ Elementen.
+\item \textbf{Ikosaeder:} $12$ Ecken, $30$ Kanten und $20$ Flächen, das macht analog $6\cdot 4 + 15\cdot 1 + 10\cdot 2 + 1 = 60$.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.5\textwidth} \includegraphics[width=0.5\textwidth]{Dieder.png}
+\caption{$3$-Dieder-Parkettierung}
+\end{wrapfigure}\noindent Für die $q$-Dieder-Parkettierung haben wir eine $q$-zählige Achse durch den Nord- und Südpol, mit Drehungen um ganzzahlige Vielfache des Winkels $2\pi/q$, sowie $2$ zählige Achsen durch durch die Punkte $A_1,\ldots,A_2q$ am Äquator, die die Parkettierung in sich überführen. Diese Drehungen bilden die \emph{orthogonale $q$-Diedergruppe} $D_q$ mit $q-1+q\cdot 1+1=2q$ Elementen. Die Ausnahmeorbiten sind \linebreak $\{\textit{Nordpol}, \textit{Südpol}\}$,$\{A_1,A_3,\ldots,A_{2q-1}\}$ \linebreak und $\{A_2,A_4,\ldots,A_{2q}\}$.
+
+\section{Orbitprojektion und Garben}
+Wir widmen uns jetzt wieder dem allgemeineren Fall zu, dass wir eine Riemannsche Fläche $X$ und eine Untergruppe $G < \operatorname{Aut}(X)$ gegeben haben. Wir wollen einen Riemannsche Fläche $Y$ und eine Überlagerung $\eta: X\rightarrow Y$ konstruieren mit $\mathcal{D}(\eta) = G$. Dazu definieren wir die
+\begin{Definition}[Orbitprojektion] Eine surjektive, stetige offene Abbildung $\eta:X\rightarrow Y$ zwischen topologischen Räumen, deren Fasern die $G$-Bahnen für $G < \operatorname{Aut}(X)$ sind, heißt \herv{$G$-Orbitprojektion}. Man nennt $Y$ \herv{Orbitraum}.
+\end{Definition}
+
+\begin{Satz}[Existenz der Orbitprojektion] Zu jeder Transformationsgruppe $G$ von $X$ existiert eine $G$-Orbitprojektion $\eta:X\rightarrow Y$.
+\end{Satz}
+\begin{proof}
+Sei $Y$ die Menge der $G$-Bahnen. Dann ist $\eta: X\rightarrow Y, x\mapsto G(x)$ surjektiv und wohldefiniert. Definiere auf $Y$ die Quotiententopologie. Wir zeigen noch, dass $\eta$ offen ist: Sei  $U\subset X$ offen, dann ist $g(U)\subset G$ offen für alle $g\in G$. Daher ist $\bigcup_{g\in G} g(U) = \eta^{-1}(\eta(U))\subset X$ offen und damit auch $\eta(U)\subset Y$.
+\end{proof}
+Man bezeichnet den Raum $Y$ auch mit $X/G$. Beachte, dass aus i.A. aus $X$ hausdorffsch $X/G$ hausdorffsch nicht folgt.
+
+Vergleichen wir nochmal mit der Definition einer normalen Abbildung erhalten wir:
+\begin{Satz} Eine holomorphe Abbildung $\eta$ zwischen zusammenhängenden Riemannschen Flächen ist genau dann eine normale Überlagerung, wenn sie eine $\mathcal{D}(\eta)$-Orbitprojektion ist.
+\end{Satz}
+Wir wollen nun die topologische Orbitprojektion $X\rightarrow X/G$ zu einer holomorphen Abbildung und $X/G$ zu einer Riemannschen Fläche machen, wenn $G<\operatorname{Aut}(X)$. Ab sofort ist $X$ ein \emph{lokal kompakter Hausdorffraum}.
+\begin{Definition}[Diskontinuität] Eine Transformationsgruppe $G<\operatorname{Aut}(X)$ heißt \herv{diskontinuierlich}, wenn $\sharp\{g\in G: g(K)\cap K \neq \emptyset \}<\infty$ für alle $K\subset X$ kompakt.
+\end{Definition}
+Es folgt, dass jede Standgruppe $G_x$ endlich und jede $G$-Bahn lokal endlich ist. -- Endliche Transformationsgruppen sind diskontinuierlich und bei kompakten Räumen $X$ ist umgekehrt jede diskontinuierliche Transformationsgruppe endlich.
+\begin{Satz} Der Orbitraum $X/G$ jeder diskontinuierlichen Transformationsgruppe $G$ ist hausdorffsch.
+\end{Satz}
+\begin{proof}
+Sei $\eta: X\rightarrow Y$ eine $G$-Orbitprojektion. Wähle ein Kompaktum $K$ mit $x,y\in \mathring{K}, x\neq y$ und $\eta(x)\neq \eta(y)$. $M:=\{g\in G: g(K)\cap K\neq \emptyset \}<\infty$, da $G$ diskontinuierlich. Da $X$ hausdorffsch und $g\in M$ Automorphismen, gibt es Umgebungen $x\in U$, $y\in V$ mit $g(U)\cap V = \emptyset\ \forall g\in M$. Man kann $U\cup V \subset K$ annehmen (notfalls $U$ und $V$ verkleinern). Dann ist $g(U)\cap V = \emptyset$ \emph{für alle} $g\in G$, weil $g(K)\cap K = \emptyset$ für alle $g\in G\setminus M$. Da $G$ eine Automorphismengruppe ist, folgt insbesondere, dass $g(U)\cap h(V) = \emptyset \ \forall g,h \in G$ und somit $\eta(U) \cap \eta(V) = \emptyset$.
+\end{proof}
+Später brauchen wir die Eigenschaft einer diskontinuierlichen Gruppe $G$, dass jeder Punkt $a\in X$ eine \emph{privilegierte Umgebung} besitzt:
+\begin{Definition} Sei $G$ eine Transformationsgruppe von $X$. Eine Umgebung $U$ von $a\in X$ heißt \herv{privilegiert}, wenn $g(U)=U\ \forall g\in G_a$ und $U \cap g(U) = \emptyset\ \forall g\in G\setminus G_a$. Durch Beschränkung entsteht aus der $G$-Orbitprojektion $\eta:X\rightarrow Y$ die $G_a$-Orbitprojektion $\eta|U : U\rightarrow \eta (U)$.
+\end{Definition}
+Da $X$ als Riemannsche Fläche hausdorffsch ist, ist $X/G$ hausdorffsch. Bleibt die Frage nach einer holomorphen Struktur auf $X/G$ zu ergründen, die die Orbitprojektion holomorph macht. Dazu führen wir das Konzept der \emph{Garben} ein.
+
+\end{document}

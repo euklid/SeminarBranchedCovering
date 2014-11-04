@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.gz
+*.thm
+lamotke.pdf
+polyeder-*.png
