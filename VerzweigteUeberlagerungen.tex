@@ -20,6 +20,7 @@
 \usepackage[arrow, matrix, curve]{xy}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{color}
 % b) Lemma, Satz, Theorem usw.
 \makeatletter
 \renewtheoremstyle{plain}%
@@ -73,15 +74,15 @@
 Wir interessieren uns weiter für holomorphe Abbildungen zwischen Riemannschen Flächen und zeigen mittels der Theorie verzweigter Überlagerungen auf, wie Überlagerungen mit gegebener Decktransformationsgruppe erzeugt werden können. Ebenso knüpfen wir an die unverzweigten Überlagerungen an und setzen sie zu verzweigten Überlagerungen fort und untersuche sie auf einige Eigenschaften.
 
 Überlagerungen Riemannscher Flächen werden etwas anders definiert als topologische Über\-la\-ge\-run\-gen.
-\begin{Definition} Eine Abbildung $\eta: X \rightarrow Y$ zwischen Riemannschen Flächen heißt eine \herv{Überlagerung}, wenn für alle $b\in Y\ \exists$ Umgebung $V$, sodass sie \herv{elementar überlagert} wird, d.h. das Urbild $\eta^{-1}(V)$ ist eine Vereinigung von Scheiben $(U,a)$, für welche $\eta|(U,a): (U,a) \rightarrow (V,b)$ Windungsabbildungen  $z\mapsto z^n$ sind.
+\begin{Definition} Eine Abbildung $\eta: X \rightarrow Y$ zwischen Riemannschen Flächen heißt eine \herv{Überlagerung}, wenn für alle $b\in Y\ \exists$ Umgebung $V$, sodass sie \herv{elementar überlagert} wird, d.h. das Urbild $\eta^{-1}(V)$ ist eine Vereinigung von Scheiben $(U,a)$, für welche $\eta|(U,a): (U,a) \rightarrow (V,b)$ Windungsabbildungen sind.
 \end{Definition}
-\begin{Bemerkung} Die topologische, \emph{unverzweigte} Überlagerung zwischen Riemannschen Flä\-chen erweist sich als Spezialfall, falls die Windungsabbildungen allesamt der Form $z \mapsto z^1$ sind, also damit biholomorph sind. Damit besitzt sie keine Verzweigungspunkte.
+\begin{Bemerkung} Die topologische, \emph{unverzweigte} Überlagerung zwischen Riemannschen Flä\-chen erweist sich als Spezialfall, falls die Windungsabbildungen allesamt der Ordnung $1$, also damit biholomorph sind. Damit besitzt sie keine Verzweigungspunkte.
 \end{Bemerkung}
 Wir erinnern an die 
 \begin{Definition}[Deckgruppe] Die \herv{Deckgruppe} $\mathcal{D}(\eta)$ einer Überlagerung (eigentlich sogar jeder holomorphen Abbildung) $\eta: X \rightarrow Y$ zwischen Riemannschen Flächen ist definiert als $\mathcal{D}(\eta) = \{ \varphi: X\rightarrow X \text{ biholomorph }|\eta\circ\varphi = \eta \}$.
-\begin{Bemerkung} Falls $X$ und $Y$ in der obigen Definition zusammenhängend sind, ist die Standgruppe $\mathcal{D}(\eta)_a$ endlich (sogar zyklisch) für $a\in X$.
-\end{Bemerkung}
 \end{Definition}
+%\begin{Bemerkung} Falls $X$ und $Y$ in der obigen Definition zusammenhängend sind, ist die Standgruppe $\mathcal{D}(\eta)_a$ endlich (sogar zyklisch) für $a\in X$.
+%\end{Bemerkung}
 \begin{Definition}Eine surjektive, offene, holomorphe Abbildung $\eta : X \rightarrow Y$ zwischen zusammenhängenden Flächen heißt \herv{normal}, wenn jede Faser ein Orbit (eine Bahn) der Deckgruppe $\mathcal{D(\eta)}$ ist. Normale Abbildungen mit zyklischer Deckgruppe heißen \herv{zyklisch}.
 \end{Definition}
 Beispiele zyklischer Überlagerungen sind $\C\rightarrow \C, z\mapsto z^n$ oder $\C\rightarrow \C^\times, z\mapsto e^{i z}$. Normal, aber nicht zyklisch ist die Torusprojektion $\C\rightarrow \C/\Omega$ mit dem Gitter $\Omega$.
@@ -136,7 +137,7 @@ Schließlich lässt sich folgender Satz folgern:
 Für jedes $T\in\operatorname{SO}_3(\R)$ ist $\varphi:=\pi\circ T\circ\pi^{-1}$ eine unitäre Möbiustransformation. Die Zuordnung $\operatorname{SO}_3(\R) \rightarrow \operatorname{Aut}(\Ch), T\mapsto \varphi$, ist ein Monomorphismus.
 \end{Satz}
 \begin{proof}
-Da $\varphi$ eine Isometrie ist, gibt es nach der obigen Bemerkung ein $A\in\operatorname{SU}_2(\C)$ mit $\varphi(z) = A(z)$ oder $\varphi(z)=A(\bar{z})$. Jedenfalls ist $\varphi^2 = \varphi\circ\varphi$ dann eine Möbiustransformation. Da es zu jedem $T\in\operatorname{SO}_3(\R)$ ein $U\in\operatorname{SO}_3(\R)$ mit $U^2=T$ gibt, ist $\varphi$ eine Möbiustransformation.
+Da $\varphi$ eine Isometrie ist, gibt es nach der obigen Bemerkung ein $A\in\operatorname{SU}_2(\C)$ mit $\varphi(z) = A(z)$ oder $\varphi(z)=A(\bar{z})$. Jedenfalls ist $\varphi^2 = \varphi\circ\varphi$ dann eine Möbiustransformation. Da es zu jedem $A\in\operatorname{SO}_3(\R)$ ein $B\in\operatorname{SO}_3(\R)$ mit $B=A^2$ gibt, ist $\varphi$ eine Möbiustransformation.
 \end{proof}
 Wir haben nun also eine Möglichkeit gefunden, Drehungen der $S^2$ als Möbius\-trans\-for\-ma\-tio\-nen von $\Ch$ zu verstehen. 
 Durch Parkettierungen der $S^2$ lassen sich nun Visualisierungen für die gefunden Automorphismengruppen anschicken.
@@ -154,11 +155,11 @@ Durch Parkettierungen der $S^2$ lassen sich nun Visualisierungen für die gefund
 
 \begin{wrapfigure}{r}{0.5\textwidth} \includegraphics[width=0.5\textwidth]{Dieder.png}
 \caption{$3$-Dieder-Parkettierung}
-\end{wrapfigure}\noindent Für die $q$-Dieder-Parkettierung haben wir eine $q$-zählige Achse durch den Nord- und Südpol, mit Drehungen um ganzzahlige Vielfache des Winkels $2\pi/q$, sowie $2$ zählige Achsen durch durch die Punkte $A_1,\ldots,A_2q$ am Äquator, die die Parkettierung in sich überführen. Diese Drehungen bilden die \emph{orthogonale $q$-Diedergruppe} $D_q$ mit $q-1+q\cdot 1+1=2q$ Elementen. Die Ausnahmeorbiten sind \linebreak $\{\textit{Nordpol}, \textit{Südpol}\}$,$\{A_1,A_3,\ldots,A_{2q-1}\}$ \linebreak und $\{A_2,A_4,\ldots,A_{2q}\}$.
+\end{wrapfigure}\noindent Für die $q$-Dieder-Parkettierung haben wir eine $q$-zählige Achse durch den Nord- und Südpol, mit Drehungen um ganzzahlige Vielfache des Winkels $2\pi/q$, sowie $2$ zählige Achsen durch durch die Punkte $A_1,\ldots,A_{2q}$ am Äquator, die die Parkettierung in sich überführen. Diese Drehungen bilden die \emph{orthogonale $q$-Diedergruppe} $D_q$ mit $q-1+q\cdot 1+1=2q$ Elementen. Die Ausnahmeorbiten sind \linebreak $\{\textit{Nordpol}, \textit{Südpol}\}$,$\{A_1,A_3,\ldots,A_{2q-1}\}$ und \linebreak $\{A_2,A_4,\ldots,A_{2q}\}$.
 
-\section{Orbitprojektion und Garben}
+\section{Orbitprojektion und \\Garben}
 Wir widmen uns jetzt wieder dem allgemeineren Fall zu, dass wir eine Riemannsche Fläche $X$ und eine Untergruppe $G < \operatorname{Aut}(X)$ gegeben haben. Wir wollen einen Riemannsche Fläche $Y$ und eine Überlagerung $\eta: X\rightarrow Y$ konstruieren mit $\mathcal{D}(\eta) = G$. Dazu definieren wir die
-\begin{Definition}[Orbitprojektion] Eine surjektive, stetige offene Abbildung $\eta:X\rightarrow Y$ zwischen topologischen Räumen, deren Fasern die $G$-Bahnen für $G < \operatorname{Aut}(X)$ sind, heißt \herv{$G$-Orbitprojektion}. Man nennt $Y$ \herv{Orbitraum}.
+\begin{Definition}[Orbitprojektion] Eine surjektive, stetige, offene Abbildung $\eta:X\rightarrow Y$ zwischen topologischen Räumen, deren Fasern die $G$-Bahnen für $G < \operatorname{Aut}(X)$ sind, heißt \herv{$G$-Orbitprojektion}. Man nennt $Y$ \herv{Orbitraum}.
 \end{Definition}
 
 \begin{Satz}[Existenz der Orbitprojektion] Zu jeder Transformationsgruppe $G$ von $X$ existiert eine $G$-Orbitprojektion $\eta:X\rightarrow Y$.
@@ -185,4 +186,69 @@ Später brauchen wir die Eigenschaft einer diskontinuierlichen Gruppe $G$, dass 
 \end{Definition}
 Da $X$ als Riemannsche Fläche hausdorffsch ist, ist $X/G$ hausdorffsch. Bleibt die Frage nach einer holomorphen Struktur auf $X/G$ zu ergründen, die die Orbitprojektion holomorph macht. Dazu führen wir das Konzept der \emph{Garben} ein.
 
+\begin{Definition}Eine \herv{(Funktionen-)Garbe $\mathcal{F}$} auf dem topologischen Raum $X$ ordnet jeder offenen Menge $U\subset X$ einen Ring $\mathcal{F}(U)$ stetiger Funktionen $U\rightarrow \C$ zu, welche alle konstanten Funktionen umfasst und daher eine $\C$-Algebra ist. Dabei wird folgendes \herv{Lokal-Global-Prinzip} verlangt:
+
+Für jede Familie $\{U_j\}$ von offenen Mengen gilt:
+\begin{enumerate}
+\item Falls $f\in \mathcal{F}(\bigcup U_j)$, dann ist für alle $U_j$: $f|U_j \in \mathcal{F}(U_j)$.
+\item Falls es $f_j\in \mathcal{F}(U_j)$ gibt mit: für alle $U_i,U_j \in \{U_l\}$ ist $f_i|U_i\cap U_j \in \mathcal{F}(U_i\cap U_j)$ und $f_j|U_i\cap U_j \in \mathcal{F}(U_i\cap U_j)$ und $f_i|U_i\cap U_j = f_j|U_i\cap U_j$, dann existiert ein eindeutiges $f\in \mathcal{F}(\bigcup U_i)$, so dass $f|U_i = f_i$ für alle $U_i$.
+\end{enumerate}
+Ein topologischer Raum $X$ zusammen mit einer Garbe $\mathcal{F}$ wird \herv{geringter Raum} $(X,\mathcal{F})$ genannt. Für $U\subset X$ offen bezeichnet $\mathcal{F}|U$ die Einschränkung von $\mathcal{F}$ auf die offenen Teilmengen von $U$. Statt $(U,\mathcal{F}|U)$ schreibe auch $(U,\mathcal{F})$.
+
+Ein \herv{Morphismus} $\varphi:(X,\mathcal{F})\rightarrow (Y,\mathcal{G})$ zwischen geringten Räumen ist eine stetige Abbildung $\varphi:X\rightarrow Y$ mit folgender Eigenschaft: Für alle $V\subset Y$ offen und $\forall g\in \mathcal{G}(V)$ gilt $g\circ\varphi \in \mathcal{F}(\varphi^{-1}(V))$. Hintereinanderschaltung von Morphismen ist ein Morphismus, ein \herv{Isomorphismus} ist bijektiver Morphismus $\varphi$ mit $\varphi^{-1}$ ein Morphismus. Isomorphismen in den gleichen geringten Raum heißen Automorphismen. Sie bilden mit Hintereinanderschaltung die Automorphismengruppe $\operatorname{Aut}(X,\mathcal{F})$.
+\end{Definition}
+
+\begin{Definition}\herv{Die holomorphe Strukturgarbe $\mathcal{O}$} einer Riemannschen Fläche $X$ benutzt statt der stetigen Funktionen, die holomorphen Funktionen für seine Definition. Schreibe auch $\mathcal{O}_X$. Die Morphismen $(X,\mathcal{O_X})\rightarrow (Y,\mathcal{O}_Y)$ sind genau die holomorphen Abbildungen.
+\end{Definition}
+Mithilfe der holomorphen Strukturgarbe haben wir nun eine weitere Möglichkeit, Riemannsche Flächen zu definieren:
+\begin{Satz} Ein geringter Hausdorffraum $(X,\mathcal{F})$ ist genau dann eine Riemannsche Fläche, wenn er zu $(\C,\mathcal{O})$ lokal isomorph ist, d.h. für alle $x\in X$ gibt es ein $x\in U\subset X$ offen und $V\subset \C$ offen, so dass $(U,\mathcal{F})$ und $(V,\mathcal{O})$ isomorph sind.
+\end{Satz}
+\begin{proof}
+Bei einer Riemannschen Fläche $(X,\mathcal{F})$ ist jede holomorphe Karte $(U,h)$ ein Isomorphismus $h:(U,\mathcal{F})\rightarrow (h(U),\mathcal{O})$. Wenn umgekehrt $(X,\mathcal{F})$ zu $(\C,\mathcal{O})$ lokal isomorph ist, wird $X$ durch offene Mengen $U_j$ überdeckt, zu denen Isomorphismen $h_j:(U_i,\mathcal{F})\rightarrow (V_j,\mathcal{O})$ auf offene Mengen $V_j\subset\C$ gehören. Dann ist $\{(U_j,h_j)\}$ ein holomorpher Atlas. Die Kartenwechsel sind holomorph, denn: $h_i^{-1}|h_i(U_i\cap U_j) : (h(U_i\cap U_j),\mathcal{O}) \xrightarrow{\cong} (U_i\cap U_j,\mathcal{F})$ Isomorphismus $\Leftrightarrow \forall g: U_i \cap U_j \rightarrow \C$ gilt $g\circ h_i \in \mathcal{O}(h_i(U_i\cap U_j))$, insbesondere für $g=h_j$.
+\end{proof}
+Wie beim Quotientenprinzip wollen wir die Garbe von $X$ auf den Orbitraum $X/G$ \glqq übertragen\grqq.
+\begin{Definition} Sei $(X,\mathcal{F})$ ein geringter Raum und $\eta: X\rightarrow Y$ eine surjektive stetige Abbildung auf einen topologischen Raum $Y$. Mit der Garbe $\mathcal{C}$ der stetigen Funktionen auf $Y$ wird die \herv{Bildgarbe $\mathcal{F}_\eta$} auf $Y$ durch \[\mathcal{F}_\eta(V):=\{f\in\mathcal{C}(V):f\circ\eta\in\mathcal{F}(\eta^{-1}(V))\} \text{ für jede offene Menge }V\subset Y \]
+definiert. Das Lokal-Global-Prinzip ist auch hier erfüllt, und $\eta:(X,\mathcal{F})\rightarrow (Y,\mathcal{F}_\eta)$ ist ein Morphismus.
+\end{Definition}
+Wir sind fast fertig. Wir müssen unseren geringten Hausdorffraum $(Y,\mathcal{F}_\eta)$ jetzt noch zur Riemannschen Fläche werden lassen:
+\begin{Satz} Sei $\eta: X\rightarrow Y$ $G$-Orbitprojektion, $G < \operatorname{Aut}(X,\mathcal{F})$ diskontinuierlich. $(Y,\mathcal{F}_\eta)$ ist ein geringter Hausdorffraum. Wenn es zu jedem $a\in X$ eine privilegierte Umgebung $U$ und eine $G_a$-Orbitprojektion $\varphi :U\rightarrow V$ gibt, sodass $(V,\mathcal{F}_\varphi)$ eine Riemannsche Fläche ist, dann ist $(Y,\mathcal{F}_\eta)$ eine Riemannsche Fläche.
+\end{Satz}
+Glücklicherweise sind die Voraussetzungen dieses Satzes auch tatsächlich gegeben, dies zu beweisen ist aber eher technisch. Damit schließen wir diesen Teil der Untersuchungen von Orbitprojektionen mit  folgendem Satz ab:
+\begin{Satz} Bei jeder diskontinuierlichen Automorphismengruppe $G<\operatorname{Aut}(X)$ einer zusammenhängenden Riemannschen Fläche $X$ ist der Orbitraum $(Y,\mathcal{O}_\eta)$ mit der Bildgarbe der $G$-Orbitprojektion $\eta: X\rightarrow Y$ eine Riemannsche Fläche. Die Projektion $\eta$ ist holomorph.
+\end{Satz}
+\section{Fortsetzung unverzweigter Überlagerungen}
+Nachdem wir verzweigte, normale Überlagerungen direkt konstruiert haben, wollen wir einen Blick auf unverzweigte Überlagerungen werfen und sehen, ob sich diese zu verzweigten Über\-la\-ge\-run\-gen fortsetzen lassen.
+
+Für eine lokal endliche Menge $B\subset Y$ einer Riemannschen Fläche Y bezeichnen wir eine Überlagerung $\hat{\eta}:\hat{X} \rightarrow Y$ als Fortsetzung der Überlagerung $\eta: X \rightarrow  Y\setminus B$, wenn $X=\hat{X}\setminus\eta^{-1}(B)$ und $\eta = \hat{\eta}|X$ gelten. Wir zeigen zunächst den
+\begin{Satz} Die unendlich-blättrige, unverzweigte Überlagerung $\eta: \mathbb{H}\rightarrow \mathbb{E}^\times$ lässt sich nicht zu einer verzweigten Überlagerung von $\mathbb{E}$ fortsetzen.
+\end{Satz}
+\begin{proof}
+Angenommen, $\eta$ ließe sich fortsetzen. Dann würde eine kleine Scheibe $\mathbb{E}_r$ elementar überlagert werden. Damit wäre für jede Komponente $U$ von $\eta^{-1}(\mathbb{E}_r^\times)$ $\eta|U : U\rightarrow \mathbb{E}_r^\times$ eine endliche Abbildung. Aber bei der Exponentialabbildung ist $\eta^{-1}(\mathbb{E}^\times_r) = U$ zusammenhängend und $\eta|U$ hat unendlich viele Blätter.
+\end{proof}
+\begin{Satz} Die unverzweigte Überlagerung $\eta: X\rightarrow Y\setminus B$ lässt sich genau dann zu einer Überlagerung $\hat{\eta}: \hat{X} \rightarrow Y$ fortsetzen, wenn jeder Punkt $b\in B$ Zentrum einer Scheibe $V$ ist, so dass für $V^\times:=V\setminus\{b\}$ und jede Komponente $U$ von $\eta^{-1}(V^\times)$ die Beschränkung $\eta|U: U\rightarrow V^\times$ endlich ist. Insbesondere existiert die Fortsetzung für jede endliche Abbildung $\eta$.
+\end{Satz}
+\begin{figure} \def\svgwidth{\textwidth} \input{KonstrVerzwUe.pdf_tex} \caption{Fortsetzung zur  verzweigten Überlagerung}\label{KVUe}
+\end{figure}
+\begin{proof}
+Die Endlichkeitsbedingung an die Abbildung ist notwendig, wie wir soeben gesehen haben. Konstruiere die Fortsetzung wie folgt:
+\begin{itemize}
+\item Wähle paarweise disjunkte Scheiben $V\subset Y$ um die Punkte in $b\in B$ und Karten $z:(V,b)\rightarrow (\mathbb{E},0)$.
+\item Aus der Endlichkeitsbedingung folgt, dass es zu jeder Komponente $U$ von $\eta^{-1}(V^\times)$ einen Isomorphismus $h: U\rightarrow \mathbb{E}^\times$ mit $z\circ \eta|U = h^n$ gibt, $n$ abhängig von $U$.
+\item Ergänze $U$ um Punkt $a_U$ zu $\hat{U}:=U\cupdot a_U$ und ergänze $h$ zur bij. Abbildung $h: (\hat{U},a_U) \rightarrow (\mathbb{E},0)$. Siehe Abb. \ref{KVUe}.
+\item $A$ sei die Menge der zusätzlichen Punkte, dann definiere auf $\hat{X} = X \cupdot A$ die folgende Topologie: $W\subset \hat{X}$ offen, wenn $W\cap X \subset X$ offen in $X$ ist und für alle Komponenten $\hat{U}$ aus der Konstruktion die Bilder $h(W\cap \hat{U})\subset \mathbb{E}$ offen in $\mathbb{E}$ sind. Das macht $\hat{X}$ zu einem Hausdorff-Raum, so dass $A\subset \hat{X}$ lokal endlich ist.
+\item Ergänze den holomorphen Atlas von $X$ um die Karten $h:\hat{U}\rightarrow \mathbb{E}$ der Konstruktion. Damit wird $\hat{X}$ zu einer Riemannschen Fläche.
+\item Definiere $\hat{\eta}: \hat{X}\rightarrow Y$ durch $\hat{\eta}|X = \eta, \hat{\eta}(a_U)=b$ für $b$ Zentrum der Scheibe $V$, für die $U$ eine Komponente von $\eta^{-1}(V^\times)$ ist.
+\item Aus der Konstruktion folgt, dass $\hat{\eta}:\hat{X}\rightarrow Y$ die Definition einer Überlagerung erfüllt und $\eta: X\rightarrow Y\setminus B$ fortsetzt.
+\end{itemize}
+\end{proof}
+\begin{Bemerkung}
+Es lässt sich zeigen, dass $\hat{X}$ und $\hat{\eta}$ bis auf Isomorphie eindeutig sind. Ebenso sind verzweigte Überlagerungen bereits gleich (bis auf Isomorphie), wenn dies für ihre Einschränkung auf die unverzweigte Überlagerung gilt.
+\end{Bemerkung}
+Auch wenn die Hintereinanderschaltung zweier verzweigter Überlagerungen i.A. keine Über\-la\-ge\-rung ist, so gilt folgender
+\begin{Satz} Ist $\eta: X\rightarrow Y$ eine unverzweigte und $\varphi: Y\rightarrow Z$ eine eventuell verzweigte Überlagerung, dann ist $\zeta:=\varphi\circ \eta$ eine Überlagerung.
+\end{Satz}
+\section{Universelle verzweigte Überlagerung}
+Wir betrachten nur zusammenhängende, holomorphe Überlagerungen $\eta:X\rightarrow Y$ mit beschränkten Windungszahlen längs jeder Faser. Nenne die Überlagerung \emph{einfach zusammenhängend}, falls ihre Überlagerungsfläche $X$ einfach zusammenhängt.
+\begin{Definition} Eine Funktion $S:Y\rightarrow \N_{>0}$ heißt \herv{Signatur}, wenn ihr \herv{Träger} $\{y\in Y: S(y) \geq 2 \}$ lokal endlich ist. Die Signatur $S_1$ \herv{teilt} $S$, wenn  für alle $y\in Y$ $S_1(y)|S(y)$ gilt. Zu jeder Überlagerung $\eta:X\rightarrow Y$ definiere die Verzweigungssignatur $S_\eta(y):=\operatorname{kgV}\{v(\eta,x) : x \in \eta^{-1}(y)\}$
+\end{Definition}
 \end{document}
