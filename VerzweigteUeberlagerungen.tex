@@ -249,12 +249,22 @@ folgt, dass die Fortsetzungen $\hat{X}$ und $\hat{\eta}$ eindeutig sind. Ebenso 
 Auch wenn die Hintereinanderschaltung zweier verzweigter Überlagerungen i.A. keine Über\-la\-ge\-rung ist, so gilt folgender
 \begin{Satz} Ist $\eta: X\rightarrow Y$ eine unverzweigte und $\varphi: Y\rightarrow Z$ eine eventuell verzweigte Überlagerung, dann ist $\zeta:=\varphi\circ \eta$ eine Überlagerung.
 \end{Satz}
+\subsection{Anwendungen der Fortsetzungskonstruktion}
+\begin{Satz} Sei $h : \pi(Y \setminus B)\rightarrow G$ ein Gruppen-Epimorphismus, so dass für jeden Punkt $b\in B$ und jede $b$-Schleife $u$ in $Y\setminus B$ das Element $h([u])$ eine endliche Ordnung hat. Dann gibt es eine normale, über $Y\setminus B$ unverzweigte Überlagerung $\eta : X \rightarrow Y $ mit der Deckgruppe $G$ und dem Poincar\'{e}schen Epimorphismus $h$.
+\end{Satz}
+\textit{Beweisidee.} Wir können mit den Gegebenheiten die genannte unverzweigte Überlagerung konstruieren. Aus der endlichen Ordnung der Elemente $h([u])$ folgt, dass die Endlichkeitsbedingung erfüllt ist. Damit können wir die Überlagerung fortsetzen.
 \section{Universelle verzweigte Überlagerung}
 Wir betrachten nur zusammenhängende, holomorphe Überlagerungen $\eta:X\rightarrow Y$ mit beschränkten Windungszahlen längs jeder Faser. Nenne die Überlagerung \emph{einfach zusammenhängend}, falls ihre Überlagerungsfläche $X$ einfach zusammenhängt.
 \begin{Definition} Eine Funktion $S:Y\rightarrow \N_{>0}$ heißt \herv{Signatur}, wenn ihr \herv{Träger} $\{y\in Y: S(y) \geq 2 \}$ lokal endlich ist. Die Signatur $S_1$ \herv{teilt} $S$, wenn  für alle $y\in Y$ $S_1(y)|S(y)$ gilt. Zu jeder Überlagerung $\eta:X\rightarrow Y$ definiere die Verzweigungssignatur $S_\eta(y):=\operatorname{kgV}\{v(\eta,x) : x \in \eta^{-1}(y)\}$
 \end{Definition}
-\begin{Definition} Seien $\eta:X\rightarrow Y$ und $\zeta: Z\rightarrow Y$ Überlagerungen, wenn es eine holomorphe Abbildung $\gamma: Z\rightarrow X$ gibt, mit $\zeta = \eta \rightarrow \gamma$, dann sagen wir, dass $\eta$ durch $\zeta$ \herv{dominiert} wird. 
+\begin{Definition} Seien $\eta:X\rightarrow Y$ und $\zeta: Z\rightarrow Y$ Überlagerungen, wenn es eine holomorphe Abbildung $\gamma: Z\rightarrow X$ gibt, mit $\zeta = \eta \circ \gamma$, dann sagen wir, dass $\eta$ durch $\zeta$ \herv{dominiert} wird. 
 
 Aus der Faktorisierung von Überlagerungen geht hervor, dass $\gamma$ auch eine Überlagerung ist und wegen Produktformel der Windungszahlen gilt $S_\eta | S_\zeta$. Nenne $\zeta$ \herv{universell}, wenn $\zeta$ alle Überlagerungen $\eta$ mit $S_\eta | S_\zeta$ dominiert.
 \end{Definition}
+
+\begin{Satz}[Existenzsatz universeller Überlagerung vereinfachter Form] Jede Verzwei-\linebreak\-gungs\-sig\-na\-tur ist die Verzweigungssignatur einer Überlagerung, die gleichzeitig normal, insbesondere gleichverzweigt, und universell ist.
+\end{Satz}
+\begin{Bemerkung}
+Jede universelle Überlagerung ist einfach zusammenhängend, normal und insbesondere gleichverzweigt.
+\end{Bemerkung}
 \end{document}
